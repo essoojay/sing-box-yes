@@ -3,7 +3,7 @@ CN|[EN](./README_EN.md)
 
 方便快捷的安装、管理sing-box:100:  
 
-sing-box是一个新的通用代理平台,对标*ray core与clash,目前支持以下协议:  
+sing-box是一个新的通用代理平台,对标*ray core与clash,且具有许多新的[特性](https://sing-box.sagernet.org/features/),目前支持以下协议:  
 
 `入站`： 
 - Shadowsocks(including shadowsocks2022)    
@@ -29,6 +29,7 @@ sing-box是一个新的通用代理平台,对标*ray core与clash,目前支持�
 - VLESS  
 - Tor  
 - SSH
+- DNS 
 
 针对sing-box的更多内容,请点击这里:point_right:[official site](https://sing-box.sagernet.org/)
 # 一键安装  
