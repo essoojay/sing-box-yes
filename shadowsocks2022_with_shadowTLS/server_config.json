@@ -28,39 +28,22 @@
     },
     "inbounds": [
         {
-            "type": "shadowsocks",
-            "tag": "ss-in",
+            "type": "shadowtls",
+            "tag": "shadowtls-in",
             "listen": "0.0.0.0",
-            "listen_port": 54126,
-            "method": "2022-blake3-aes-128-gcm",
-            "password": "8JCsPssfgS8tiRwiMlhARg==",
-            "network": "tcp",
-            "domain_strategy": "prefer_ipv4",
-            "tcp_fast_open": true,
-            "sniff": true,
-            "proxy_protocol": false
+            "listen_port": 8443,
+            "handshake": {
+                "server": "cloud.tencent.com",
+                "server_port": 443
+            },
+            "detour": "shadowsocks-in"
         },
         {
-            "type": "vmess",
-            "tag": "vmess-in",
-            "listen": "0.0.0.0",
-            "listen_port": 45986,
-            "users": [
-                {
-                    "name": "franzkafka",
-                    "uuid": "bf000d23-0752-40b4-affe-68f7707a9661",
-                    "alterId": 0
-                }
-            ],
-            "tls": {
-                "enabled": true,
-                "server_name": "servername.com",
-                "certificate_path": "/root/cert/fullchain.cer",
-                "key_path": "/root/cert/servername.com.key"
-            },
-            "transport": {
-                "type": "http"
-            }
+            "type": "shadowsocks",
+            "tag": "ss-in",
+            "listen": "127.0.0.1",
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "8JCsPssfgS8tiRwiMlhARg=="
         }
     ],
     "outbounds": [
@@ -85,14 +68,18 @@
             },
             {
                 "inbound": [
-                    "ss-in",
-                    "vmess-in"
+                    "ss-in"
                 ],
-                "network": "tcp",
-                "outbound": "direct"
-            },
-            {
-                "geosite": "category-ads-all",
+                "geosite": [
+                    "cn",
+                    "category-ads-all"
+                ],
+                "geoip": [
+                    "cn"
+                ],
+                "source_geoip": [
+                    "private"
+                ],
                 "outbound": "block"
             },
             {
